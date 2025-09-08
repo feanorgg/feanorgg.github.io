@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow: auto;
+}
+
+p, input, b {
+    font-family: "Inter", sans-serif;
+}
+
+p {
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: -0.4px;
+    color: #FFFFFF99;
+}
+
+b {
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0.36%;
+    color: #FFFFFFDE;
+}
+
+:root {
+    --red: #FC363999;
+    --blue: #0184CF;
+}

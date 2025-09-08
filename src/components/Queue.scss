@@ -1,0 +1,51 @@
+.Queue {
+    width: 430px;
+    height: max-content;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+
+    padding: 32px 16px;
+    border-radius: 4px;
+    
+    background-color: #000000B2;
+
+    .queue-header {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 8px;
+
+        .queue-title {
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 28px;
+            letter-spacing: 0.36%;
+            color: #FFFFFFDE;
+        }
+
+        .add {
+            margin-left: auto;
+        }
+    }
+
+    .queue-scroll {
+        height: max-content;
+        max-height: calc(100vh - 300px);
+        overflow-y: auto;
+
+        .queue-list {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 16px;
+        }
+    }
+}

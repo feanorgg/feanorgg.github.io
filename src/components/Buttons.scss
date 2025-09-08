@@ -1,0 +1,81 @@
+button {
+    background-color: #0000;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.Button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    height: 29px;
+    cursor: pointer;
+
+    p {
+        font-size: 14px;
+        line-height: 21px;
+        transition: color 0.3s ease-in-out;
+    }
+}
+
+.Button:hover {
+    p {
+        color: var(--blue);
+    }
+}
+
+.GraphicButton {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+        path {
+            transition: fill 0.3s ease-in-out, fill-opacity 0.3s ease-in-out;
+        }
+    }
+}
+
+.GraphicButton:hover {
+    svg {
+        path {
+            fill: var(--blue);
+            fill-opacity: 1;
+        }
+    }
+}
+
+.GraphicButton.trash:hover {
+    svg {
+        path {
+            fill: var(--red);
+            fill-opacity: 1;
+        }
+    }
+}
+
+.ActionButton {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #FFFFFF14;
+    transition: background-color 0.3s ease-in-out;
+
+    img {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.ActionButton:hover {
+    background-color: #FFFFFF33;
+}

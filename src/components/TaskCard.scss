@@ -1,0 +1,66 @@
+.TaskCard {
+    width: 398px;
+    height: max-content;
+    box-sizing: border-box;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    padding: 16px;
+    gap: 8px;
+    border-radius: 4px;
+
+    background-color: #FFFFFF1A;
+    border: 1px solid #FFFFFF00;
+    transition: border-color .3s ease-in-out;
+
+    .line {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        height: max-content;
+        gap: 16px;
+        width: 100%;
+
+        .fading {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .edit {
+            margin-left: auto;
+        }
+    }
+
+    .actions {
+        align-self: flex-end;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+    }
+}
+
+.TaskCard:hover, .TaskCard:focus-within {
+    border: 1px solid var(--blue);
+}
+
+.TaskCard:hover {
+    .fading {
+        opacity: 1;
+        pointer-events: all;
+    }
+}
+
+.TaskCard.editing {
+    .fading {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
