@@ -6,3 +6,4 @@ npm run start
 Запуск теста: npm run test
 
 Ссылка на приложение:
+https://feanorgg.github.io/
