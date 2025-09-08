@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useReducer, useState } from "react";
 import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
+import { getDndBackend } from "./utils/getDndBackend";
 import { loadTasks, saveTasks } from "./utils/storage";
 import { parseDate } from "./utils/formatDate";
 import { SearchTextField } from "./components/TextField";
@@ -41,7 +41,7 @@ export default function App() {
     }, [tasks, searchValue]);
 
     return(
-        <DndProvider backend={HTML5Backend}>
+        <DndProvider backend={getDndBackend()}>
             <div className="App">
                 <div className="wrapper">
                     <div className="header">
