@@ -1,5 +1,7 @@
 .App {
     min-height: 100vh;
+    max-height: 100vh;
+    overflow-x: hidden;
     min-width: 768px;
     display: flex;
     flex-direction: column;

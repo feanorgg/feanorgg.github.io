@@ -2,7 +2,7 @@
   "name": "idea_test_task",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://feanorgg.github.io/idea-test-task/",
+  "homepage": "https://feanorgg.github.io",
   "main": "index.js",
   "scripts": {
     "test": "jest",
