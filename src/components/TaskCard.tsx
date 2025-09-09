@@ -11,6 +11,13 @@ import { isOverdue } from "../utils/isOverdue";
 export const TaskCard = React.memo(({task, dispatch, style={}}: {task: Task, dispatch: React.Dispatch<any>, style?: React.CSSProperties}) => {
     const [editing, setEditing] = useState<boolean>(task.editing || false);
 
+    const handleEdit = () => {
+        setStartDay(formatDate(task.startDay));
+        setEndDay(formatDate(task.endDay));
+        setText(task.text);
+        setEditing(true);
+    }
+
     const handleCancel = () => {
         setEditing(false);
         setStartDay(formatDate(task.startDay));
@@ -21,13 +28,8 @@ export const TaskCard = React.memo(({task, dispatch, style={}}: {task: Task, dis
     const handleDone = () => {
         const newStartDay = parseDate(startDay);
         const newEndDay = parseDate(endDay);
-        if (!isNaN(newStartDay) && !isNaN(newEndDay)) {
-            dispatch({type: "edit", task: {...task, startDay: newStartDay, endDay: newEndDay, text: text}});
-        } else {
-            setStartDay(formatDate(task.startDay));
-            setEndDay(formatDate(task.endDay));
-            setText(task.text);
-        }
+        dispatch({type: "edit", task: {...task, startDay: newStartDay, endDay: newEndDay, text: text}});
+        
         setEditing(false);
     }
 
@@ -69,7 +71,7 @@ export const TaskCard = React.memo(({task, dispatch, style={}}: {task: Task, dis
                     ref={startDayRef}
                 /> 
                 : <b>{formatDate(task.startDay)}</b>}
-                <ButtonEdit onClick={() => setEditing(true)} className="fading edit" />
+                <ButtonEdit onClick={handleEdit} className="fading edit" />
                 <ButtonTrash onClick={() => dispatch({type: "delete", id: task.id})} className="fading" />
             </div>
             <div className="line">
