@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useReducer, useState } from "react";
-// import { DndProvider } from 'react-dnd';
 import { loadTasks, saveTasks } from "./utils/storage";
-import { parseDate } from "./utils/formatDate";
+import { containsDate } from "./utils/dateOperations";
 import { SearchTextField } from "./components/TextField";
 import Queue from "./components/Queue";
 import { TaskCard } from "./components/TaskCard";
@@ -40,7 +39,7 @@ export default function App() {
 
     const [searchValue, setSearchValue] = useState<string>("");
     const filteredTasks = useMemo(() => {
-        return tasks.filter(t => /^\d{2}\.\d{2}\.\d{4}$/.test(searchValue) ? t.startDay === parseDate(searchValue) || t.endDay === parseDate(searchValue) : t.text.toLowerCase().includes(searchValue.toLowerCase()));
+        return tasks.filter(t => /^\d{2}\.\d{2}\.\d{4}$/.test(searchValue) ? containsDate(t, searchValue) : t.text.toLowerCase().includes(searchValue.toLowerCase()));
     }, [tasks, searchValue]);
 
     const TaskCardPreview = () => {

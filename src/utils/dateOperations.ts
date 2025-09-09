@@ -1,3 +1,5 @@
+import Task from "../types/Task";
+
 export function formatDate(timestamp: number): string {
     const d = new Date(timestamp);
     return d.toLocaleDateString("ru-RU"); 
@@ -10,4 +12,11 @@ export function parseDate(str: string): number {
         return new Date().getTime();
     }
     return date.getTime();
+}
+
+export function containsDate(task: Task, date: string): boolean {
+    const [d, m, y]: number[] = date.split(".").map(Number);
+    const dayStart = new Date(y, m - 1, d).getTime();
+    const dayEnd = new Date(y, m - 1, d, 23, 59, 59, 999).getTime();
+    return (task.startDay <= dayEnd && task.startDay >= dayStart) || (task.endDay <= dayEnd && task.endDay >= dayStart);
 }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ButtonCancel, ButtonDone, ButtonEdit, ButtonTrash } from "./Buttons";
 import { TextField } from "./TextField";
 import { useDrag } from 'react-dnd';
-import { formatDate, parseDate } from "../utils/formatDate";
+import { formatDate, parseDate } from "../utils/dateOperations";
 import { useMask } from "@react-input/mask";
 import Task from "../types/Task";
 import "./TaskCard.scss";
@@ -29,7 +29,7 @@ export const TaskCard = React.memo(({task, dispatch, style={}}: {task: Task, dis
         const newStartDay = parseDate(startDay);
         const newEndDay = parseDate(endDay);
         dispatch({type: "edit", task: {...task, startDay: newStartDay, endDay: newEndDay, text: text}});
-        
+
         setEditing(false);
     }
 
