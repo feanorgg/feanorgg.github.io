@@ -8,7 +8,7 @@ import Task from "../types/Task";
 import "./TaskCard.scss";
 import { isOverdue } from "../utils/isOverdue";
 
-export const TaskCard = React.memo(({task, dispatch}: {task: Task, dispatch: React.Dispatch<any>}) => {
+export const TaskCard = React.memo(({task, dispatch, style={}}: {task: Task, dispatch: React.Dispatch<any>, style?: React.CSSProperties}) => {
     const [editing, setEditing] = useState<boolean>(task.editing || false);
 
     const handleCancel = () => {
@@ -51,8 +51,15 @@ export const TaskCard = React.memo(({task, dispatch}: {task: Task, dispatch: Rea
         replacement: { _: /\d/ },
     });
 
+    const [hovered, setHovered] = useState<boolean>(false);
+
     return drag(
-        <div className={`TaskCard ${editing ? 'editing' : ''}`}>
+        <div 
+            className={`TaskCard ${editing ? 'editing' : ''} ${hovered ? 'hovered' : ''}`} 
+            style={style}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+        >
             <div className="line">
                 <p>Начало:</p>
                 {editing ? 

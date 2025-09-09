@@ -47,11 +47,11 @@
     }
 }
 
-.TaskCard:hover, .TaskCard:focus-within {
+.TaskCard.hovered, .TaskCard:focus-within {
     border: 1px solid var(--blue);
 }
 
-.TaskCard:hover {
+.TaskCard.hovered {
     .fading {
         opacity: 1;
         pointer-events: all;

@@ -21,11 +21,14 @@ export default function Queue({
     dispatch,
     tasks
 }: QueueProps) {
-    const [, drop] = useDrop(() => ({
+    const [{ canDrop }, drop] = useDrop(() => ({
         accept: 'task',
         drop: (task: Task) => {
             dispatch({type: "move", id: task.id, status: status});
-        }
+        },
+        collect: (monitor: any) => ({
+            canDrop: monitor.canDrop()
+        })
     }));
     
     return drop(
@@ -42,6 +45,7 @@ export default function Queue({
                     {tasks.map((task) => (
                         <TaskCard task={task} key={task.id} dispatch={dispatch} />
                     ))}
+                    {canDrop && tasks.length === 0 && <div className="card-placeholder"></div>}
                 </div>
             </div>
         </div>

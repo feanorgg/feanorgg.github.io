@@ -16,10 +16,11 @@
   "license": "ISC",
   "dependencies": {
     "@react-input/mask": "^2.0.4",
+    "rdndmb-html5-to-touch": "^9.0.0",
     "react": "^19.1.1",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
-    "react-dnd-touch-backend": "^16.0.1",
+    "react-dnd-multi-backend": "^9.0.0",
     "react-dom": "^19.1.1"
   },
   "devDependencies": {

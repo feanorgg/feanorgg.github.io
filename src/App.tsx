@@ -1,12 +1,15 @@
 import { useEffect, useMemo, useReducer, useState } from "react";
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
+// import { DndProvider } from 'react-dnd';
 import { loadTasks, saveTasks } from "./utils/storage";
 import { parseDate } from "./utils/formatDate";
 import { SearchTextField } from "./components/TextField";
 import Queue from "./components/Queue";
+import { TaskCard } from "./components/TaskCard";
 import Task from "./types/Task";
 import "./styles/App.scss";
+
+import { DndProvider, usePreview } from 'react-dnd-multi-backend';
+import { HTML5toTouch } from 'rdndmb-html5-to-touch';
 
 const queues = [
     {icon: "/icons/bxs_happy-alt.svg", title: "To Do", status: "todo", allowAdd: true},
@@ -40,8 +43,20 @@ export default function App() {
         return tasks.filter(t => /^\d{2}\.\d{2}\.\d{4}$/.test(searchValue) ? t.startDay === parseDate(searchValue) || t.endDay === parseDate(searchValue) : t.text.toLowerCase().includes(searchValue.toLowerCase()));
     }, [tasks, searchValue]);
 
-    return(
-        <DndProvider backend={HTML5Backend}>
+    const TaskCardPreview = () => {
+        const preview = usePreview();
+        if (!preview.display) {
+            return null;
+        }
+        const {item, style} = preview;
+        return( // @ts-ignore
+            <TaskCard task={item} dispatch={dispatch} style={style} />
+        );
+    }
+
+    return( // backend={HTML5Backend}
+        <DndProvider options={HTML5toTouch}>
+            <TaskCardPreview />
             <div className="App">
                 <div className="wrapper">
                     <div className="header">

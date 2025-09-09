@@ -46,6 +46,14 @@
             justify-content: flex-start;
             align-items: center;
             gap: 16px;
+
+            .card-placeholder {
+                width: 398px;
+                height: 114px;
+                border: 1px dashed #FFFFFF1A;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
         }
     }
 }
