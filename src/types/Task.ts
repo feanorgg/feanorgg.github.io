@@ -4,5 +4,4 @@ export default interface Task {
     startDay: number;
     endDay: number;
     text: string;
-    editing?: boolean;
 }

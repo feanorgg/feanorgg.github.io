@@ -3,6 +3,7 @@ import { TaskCard } from "./TaskCard";
 import { useDrop } from 'react-dnd';
 import Task from "../types/Task";
 import "./Queue.scss";
+import { getTodayTime } from "../utils/dateOperations";
 
 interface QueueProps {
     icon: string;
@@ -37,7 +38,7 @@ export default function Queue({
                 <img src={icon} />
                 <p className="queue-title">{title}</p>
 
-                {allowAdd && <ButtonAdd className="add" onClick={() => dispatch({type: "add", task: {id: Date.now(), text: "", startDay: Date.now(), endDay: Date.now(), type: "todo", editing: true}})} />}
+                {allowAdd && <ButtonAdd className="add" onClick={() => dispatch({type: "add", task: {type: "todo", startDay: getTodayTime(), endDay: getTodayTime(), text: ""}})} />}
             </div>
             
             <div className="queue-scroll">

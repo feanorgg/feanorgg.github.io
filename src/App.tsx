@@ -21,7 +21,8 @@ export default function App() {
     const [tasks, dispatch] = useReducer((state: Array<Task>, action) => {
         switch(action.type) {
             case "add":
-                return [...state, action.task];
+                const task = {id: state.length ? Math.max(...state.map(t => t.id)) + 1 : 1, ...action.task};
+                return [...state, task];
             case "edit":
                 return state.map(t => t.id === action.task.id ? action.task : t);
             case "delete":

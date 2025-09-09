@@ -3,13 +3,13 @@ import { ButtonCancel, ButtonDone, ButtonEdit, ButtonTrash } from "./Buttons";
 import { TextField } from "./TextField";
 import { useDrag } from 'react-dnd';
 import { formatDate, parseDate } from "../utils/dateOperations";
+import { isOverdue } from "../utils/isOverdue";
 import { useMask } from "@react-input/mask";
 import Task from "../types/Task";
 import "./TaskCard.scss";
-import { isOverdue } from "../utils/isOverdue";
 
 export const TaskCard = React.memo(({task, dispatch, style={}}: {task: Task, dispatch: React.Dispatch<any>, style?: React.CSSProperties}) => {
-    const [editing, setEditing] = useState<boolean>(task.editing || false);
+    const [editing, setEditing] = useState<boolean>(false);
 
     const handleEdit = () => {
         setStartDay(formatDate(task.startDay));
