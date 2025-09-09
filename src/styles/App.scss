@@ -59,3 +59,13 @@
         }
     }
 }
+
+@media screen and (min-width: 1920px) {
+    .App {
+        .wrapper {
+            max-width: 1920px;
+            overflow: hidden;
+            align-self: center;
+        }
+    }
+}
