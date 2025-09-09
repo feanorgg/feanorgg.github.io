@@ -49,8 +49,8 @@ export default function App() {
             return null;
         }
         const {item, style} = preview;
-        return( // @ts-ignore
-            <TaskCard task={item} dispatch={dispatch} style={style} />
+        return( 
+            <TaskCard task={item as Task} dispatch={dispatch} style={style} />
         );
     }
 
